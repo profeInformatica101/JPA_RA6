@@ -26,6 +26,7 @@
                     <th>Nombre de Usuario</th>
                     <th>Email</th>
                     <th>Teléfono</th>
+					<th>Rol</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -35,6 +36,7 @@
                     <td th:text="${usuario.username}"></td>
                     <td th:text="${usuario.informacionUsuario.email}"></td>
                     <td th:text="${usuario.informacionUsuario.telefono}"></td>
+					<td th:text="${usuario.rol}"></td>
                     <td>
                         <a th:href="@{/usuarios/editar/{id}(id=${usuario.id})}" class="btn btn-warning btn-sm">Editar</a>
                         <a th:href="@{/usuarios/eliminar/{id}(id=${usuario.id})}" class="btn btn-danger btn-sm">Eliminar</a>

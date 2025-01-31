@@ -47,6 +47,15 @@
                     <span th:each="error : ${#fields.errors('informacionUsuario.telefono')}" th:text="${error}"></span>
                 </div>
             </div>
+			
+			<!-- Campo Rol -->
+			            <div class="mb-3">
+			                <label for="rol" class="form-label">Rol</label>
+			                <input type="text" class="form-control" id="rol" th:field="*{rol}" >
+			                <div th:if="${#fields.hasErrors('rol')}" class="text-danger">
+			                    <span th:each="error : ${#fields.errors('rol')}" th:text="${error}"></span>
+			                </div>
+			            </div>
 
             <!-- Botones -->
             <button type="submit" class="btn btn-primary">Guardar</button>
