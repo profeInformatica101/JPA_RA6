@@ -53,7 +53,7 @@
 			<!-- Campo Rol -->
 			<div class="mb-3">
 				<label for="rol" class="form-label">Rol</label>
-				<select th:field="*{rol}">
+				<select th:field="*{rol}"  class="form-control">
 					<option th:each="rol : ${roles}" th:text="${rol}" th:value="${rol}"></option>
 				</select>
 				
