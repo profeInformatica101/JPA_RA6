@@ -30,6 +30,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
                 actualizado.setId(usuario.getId());
                 actualizado.setUsername(usuario.getUsername());
                 actualizado.setPassword(usuario.getPassword());
+                actualizado.setRol(usuario.getRol());
                 actualizado.setInformacionUsuario(usuario.getInformacionUsuario());
                 return usuarioRepositorio.save(actualizado);
             }

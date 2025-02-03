@@ -39,7 +39,7 @@ public class InicializarDatos implements CommandLineRunner {
         for (int i = 1; i <= TOTAL; i++) { // Generar 10 usuarios de prueba
             String email = faker.internet().emailAddress();
             String telefono = faker.number().digits(8); // Genera un teléfono de 8 dígitos
-            String username = faker.name().username();
+            String username = faker.name().username().replaceAll(" ", "");
             String password = faker.internet().password(8, 12);
             
             Rol rol = ROLES.get(RANDOM.nextInt(SIZE));

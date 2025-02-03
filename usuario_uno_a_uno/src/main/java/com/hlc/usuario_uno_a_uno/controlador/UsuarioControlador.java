@@ -2,6 +2,7 @@ package com.hlc.usuario_uno_a_uno.controlador;
 
 import com.hlc.usuario_uno_a_uno.entidad.InformacionUsuario;
 import com.hlc.usuario_uno_a_uno.entidad.Usuario;
+import com.hlc.usuario_uno_a_uno.entidad.enumerado.Rol;
 import com.hlc.usuario_uno_a_uno.servicio.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -70,8 +71,9 @@ public class UsuarioControlador {
         if (usuario.getInformacionUsuario() == null) {
             usuario.setInformacionUsuario(new InformacionUsuario());
         }
-
+        
         model.addAttribute("usuario", usuario);
+        model.addAttribute("roles", Rol.values());
         return VISTA_FORMULARIO;
     }
     @GetMapping("/eliminar/{id}")
