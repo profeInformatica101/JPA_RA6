@@ -17,6 +17,14 @@
                 <button type="submit" class="btn btn-secondary">Buscar</button>
             </div>
         </form>
+		
+		<form class="d-flex m-3" th:action="@{/usuarios/filtrar}" method="get">
+			<select id="rol" name="rol" class="form-select">
+				<option value="" disabled selected>Selecciona un rol</option>
+ 				<option th:value="${rol_}" th:text="${rol_}" th:each="rol_ : ${roles}"></option>
+			</select>
+			<button class="btn btn-outline-warning" type="submit">Filtrar</button>
+		</form>	
 
         <!-- Tabla de usuarios -->
         <table class="table table-striped">

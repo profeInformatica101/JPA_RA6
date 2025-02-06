@@ -34,6 +34,7 @@ public class UsuarioControlador {
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", usuarios.getTotalPages());
+        model.addAttribute("roles", Rol.values());
         return "usuarios/listar";
     }
 
@@ -44,13 +45,29 @@ public class UsuarioControlador {
     	usuario.setInformacionUsuario(informacionUsuario); // Inicializa la relación 1:1      
 
     	model.addAttribute("usuario", usuario);
+    	model.addAttribute("roles", Rol.values());
         return VISTA_FORMULARIO;
+    }
+    
+    @GetMapping("/filtrar")
+    public String filtrarRoles(@RequestParam String rol, @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size, Model model) {
+    	
+    	Pageable pageable = PageRequest.of(page, size);
+    	Page<Usuario> usuarios = usuarioServicio.buscarPorRoles(Rol.valueOf(rol), pageable);
+    	model.addAttribute("usuarios", usuarios);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", usuarios.getTotalPages());
+        model.addAttribute("roles", Rol.values());
+        
+    	return "usuarios/listar";
     }
 
     @PostMapping("/guardar")
     public String guardarUsuario(@Valid @ModelAttribute Usuario usuario, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("usuario", usuario);
+            model.addAttribute("roles", Rol.values());
             return VISTA_FORMULARIO;
         }
 
@@ -77,8 +94,9 @@ public class UsuarioControlador {
         return VISTA_FORMULARIO;
     }
     @GetMapping("/eliminar/{id}")
-    public String eliminarUsuario(@PathVariable Long id) {
+    public String eliminarUsuario(@PathVariable Long id, Model model) {
         usuarioServicio.eliminarUsuario(id);
+        model.addAttribute("roles", Rol.values());
         return REDIRECT_LISTADO;
     }
 
@@ -93,6 +111,7 @@ public class UsuarioControlador {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", usuarios.getTotalPages());
         model.addAttribute("nombre", nombre);
+        model.addAttribute("roles", Rol.values());
         return "usuarios/listar";
     }
 }
