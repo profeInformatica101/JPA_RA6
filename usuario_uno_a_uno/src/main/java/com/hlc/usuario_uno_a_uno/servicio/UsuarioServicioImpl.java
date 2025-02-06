@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.hlc.usuario_uno_a_uno.entidad.Usuario;
 import com.hlc.usuario_uno_a_uno.entidad.enumerado.Rol;
+import com.hlc.usuario_uno_a_uno.errores.excepcion.ResourceNotFoundException;
 import com.hlc.usuario_uno_a_uno.repositorio.UsuarioRepositorio;
 
 @Service
@@ -43,7 +44,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     @Override
     public Usuario obtenerUsuarioPorId(Long id) {
         Optional<Usuario> usuario = usuarioRepositorio.findById(id);
-        return  usuario.orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: "+id));
+        return  usuario.orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado con ID: "+id));
     }
 
     @Override

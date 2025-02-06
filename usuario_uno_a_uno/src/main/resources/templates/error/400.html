@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Error 400 - Bad Request</title>
+</head>
+<body>
+    <h1>Error 400: Petición Incorrecta</h1>
+    <p>La solicitud que has enviado no cumple con los requisitos esperados por el servidor.</p>
+
+    <!-- Si deseas mostrar mensajes de error específicos: -->
+    <div>
+        <p th:text="'Mensaje: ' + ${message}"></p>
+    </div>
+
+    <!-- Botón o enlace de retorno a la página principal, por ejemplo: -->
+    <p>
+        <a th:href="@{/}">Volver a la página principal</a>
+    </p>
+</body>
+</html>
